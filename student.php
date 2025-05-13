@@ -25,9 +25,6 @@ checkUserAccess();
     <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="fontFix.js"></script>
-
-
-
 </head>
 
 <body>
