@@ -1,5 +1,4 @@
 <style>
-    /* Footer Styles */
     .footer {
         position: fixed;
         bottom: 0;
@@ -37,21 +36,25 @@
 
     .footer-links a:hover {
         opacity: 0.8;
-    }
-
-    .footer-content {
+    }    .footer-content {
         display: flex;
         flex-direction: column;
         align-items: center; 
     }
+    
+    .footer-highlight {
+        background: #000000;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0px 0px 3px rgba(0,0,0,0.1);
+        padding: 0 2px;
+    }
 </style>
 <footer class="footer">
-    <div class="footer-content">
+    <div class="footer-content">        
         <div class="footer-copyright">
-            <p>Copyright © 2024 Designed by <span style="background: linear-gradient(to right, #cb2d3e, #ef473a);"
-                    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip:
-                    text;">Technology Innovation Hub - MKCE.</span> All rights reserved.</p>
+            <p>Copyright © 2024 Designed by <span class="footer-highlight">Technology Innovation Hub - MKCE.</span> All rights reserved.</p>
         </div>
-        
     </div>
 </footer>
