@@ -6,11 +6,8 @@
         right: 0;
         left: var(--sidebar-width);
         height: var(--topbar-height);
-        /* background-color: #E4E4E1; */
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.40) 0%, rgba(0, 0, 0, 0.40) 120%) #989898;
-        background-blend-mode: multiply, multiply;
-
-        box-shadow: var(--card-shadow);
+        background: linear-gradient(135deg, #6200ea, #03dac6);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         display: flex;
         align-items: center;
         padding: 0 20px;
@@ -22,7 +19,7 @@
 
     .brand-logo {
         display: none;
-        color: var(--primary-color);
+        color: white;
         font-size: 24px;
         margin: 0 auto;
     }
@@ -33,8 +30,13 @@
 
     .hamburger {
         cursor: pointer;
-        font-size: 20px;
+        font-size: 22px;
         color: white;
+        transition: transform 0.3s ease;
+    }
+    
+    .hamburger:hover {
+        transform: scale(1.1);
     }
 
     .user-profile {
@@ -42,21 +44,22 @@
         color: white;
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
+        font-weight: 500;
     }
 
     .user-avatar {
-        width: 35px;
-        height: 35px;
+        width: 38px;
+        height: 38px;
         border-radius: 50%;
-        background: var(--primary-color);
+        background: white;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: white;
         position: relative;
         transition: var(--transition);
-        border: 2px solid var(--primary-color);
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .user-avatar:hover {
@@ -71,6 +74,7 @@
         border-radius: 50%;
         bottom: 0;
         right: 0;
+        border: 2px solid white;
         animation: blink 1.5s infinite;
     }
 
@@ -78,11 +82,9 @@
         0% {
             opacity: 1;
         }
-
         50% {
             opacity: 0.5;
         }
-
         100% {
             opacity: 1;
         }
@@ -99,10 +101,12 @@
         top: 100%;
         right: 0;
         background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        border-radius: 8px;
         display: none;
         min-width: 200px;
+        margin-top: 10px;
+        overflow: hidden;
     }
 
     .dropdown-menu.show {
@@ -115,7 +119,6 @@
             transform: translateY(-10px);
             opacity: 0;
         }
-
         to {
             transform: translateY(0);
             opacity: 1;
@@ -123,8 +126,8 @@
     }
 
     .dropdown-item {
-        padding: 10px 20px;
-        color: var(--secondary-color);
+        padding: 12px 20px;
+        color: #333;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -132,47 +135,16 @@
     }
 
     .dropdown-item:hover {
-        background: var(--light-bg);
-        color: var(--primary-color);
+        background: #f5f5f5;
+        color: #6200ea;
     }
-
-    /* User Profile Styles */
-    .user-profile {
-        margin-left: auto;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .user-avatar {
-        width: 35px;
-        height: 35px;
-        border-radius: 50%;
-        background: var(--primary-color);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        position: relative;
-        overflow: hidden;
-    }
-
+    
+    /* User avatar image styling */
     .user-avatar img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-    }
-
-    .online-indicator {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: var(--success-color);
         border-radius: 50%;
-        bottom: 0;
-        right: 0;
-        border: 2px solid white;
-        animation: blink 1.5s infinite;
     }
 </style>
 

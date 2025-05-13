@@ -5,7 +5,7 @@
         left: var(--sidebar-width);
         right: 0;
         height: var(--footer-height);
-        background: linear-gradient(45deg, #4e73df, #1cc88a);
+        background: linear-gradient(135deg, #6200ea, #03dac6);
         color: white;
         display: flex;
         align-items: center;
@@ -13,6 +13,7 @@
         padding: 0 20px;
         transition: all 0.3s ease;
         z-index: 999;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .sidebar.collapsed+.content .footer {
@@ -21,6 +22,8 @@
 
     .footer-copyright {
         text-align: center;
+        font-weight: 500;
+        letter-spacing: 0.3px;
     }
 
     .footer-links {
@@ -43,12 +46,13 @@
     }
     
     .footer-highlight {
-        background: #000000;
+        background: white;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        text-shadow: 0px 0px 3px rgba(0,0,0,0.1);
+        text-shadow: 0px 0px 3px rgba(255,255,255,0.2);
         padding: 0 2px;
+        font-weight: 700;
     }
 </style>
 <footer class="footer">

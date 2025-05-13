@@ -313,27 +313,23 @@ body {
   animation: modalEnter 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 :root {
-  --sidebar-width: 250px;
-  --sidebar-collapsed-width: 70px;
-  --topbar-height: 60px;
-  --footer-height: 60px;
-  --primary-color: #4e73df;
-  --secondary-color: #858796;
-  --success-color: #1cc88a;
-  --dark-bg: #1a1c23;
-  --light-bg: #f8f9fc;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 90px;
+  --topbar-height: 70px;
+  --footer-height: 70px;
+  --primary-color: #6200ea; /* Deep purple */
+  --secondary-color: #03dac6; /* Teal accent */
+  --success-color: #00c853; /* Bright green */
+  --dark-bg: #121212; /* Dark theme background */
+  --light-bg: #ffffff; /* Light theme background */
+  --card-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease-in-out;
 }
 
-/* General Styles with Enhanced Typography */
+/* General Styles */
 body {
-  min-height: 100vh;
-  margin: 0;
   background: var(--light-bg);
-  overflow-x: hidden;
-  padding-bottom: var(--footer-height);
-  position: relative;
+  color: #333;
   font-family: 'Poppins', sans-serif;
 }
 
@@ -381,7 +377,8 @@ body {
 }
 
 .breadcrumb-area {
-  background: white;
+  background: var(--primary-color);
+  color: white;
   border-radius: 10px;
   box-shadow: var(--card-shadow);
   margin: 20px;
@@ -389,13 +386,13 @@ body {
 }
 
 .breadcrumb-item a {
-  color: var(--primary-color);
+  color: var(--light-bg);
   text-decoration: none;
   transition: var(--transition);
 }
 
 .breadcrumb-item a:hover {
-  color: #224abe;
+  color: var(--success-color);
 }
 
 /* Table Styles */
@@ -551,7 +548,8 @@ td {
 }
 
 .breadcrumb-area {
-  background: white;
+  background: var(--primary-color);
+  color: white;
   border-radius: 10px;
   box-shadow: var(--card-shadow);
   margin: 20px;
@@ -559,13 +557,13 @@ td {
 }
 
 .breadcrumb-item a {
-  color: var(--primary-color);
+  color: var(--light-bg);
   text-decoration: none;
   transition: var(--transition);
 }
 
 .breadcrumb-item a:hover {
-  color: #224abe;
+  color: var(--success-color);
 }
 
 /* Table Styles */
@@ -744,17 +742,6 @@ tbody td {
   100% {
     transform: rotate(360deg);
   }
-}
-
-/* Hide content initially */
-.content-wrapper {
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* Show content when loaded */
-.content-wrapper.show {
-  opacity: 1;
 }
 
 .dataTables_wrapper .dataTables_paginate .paginate_button {

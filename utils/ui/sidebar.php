@@ -5,22 +5,31 @@
         left: 0;
         height: 100vh;
         width: var(--sidebar-width);
-        background: var(--dark-bg);
+        background: linear-gradient(135deg, #2c3e50, #1a242f);
         transition: var(--transition);
         z-index: 1000;
         overflow-y: auto;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-        background-image: url('image/pattern_h.png');
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         font-family: 'Poppins', sans-serif;
     }
 
     .sidebar::-webkit-scrollbar {
-        width: 0;
-        display: none;
+        width: 5px;
+        display: block;
+    }
+    
+    .sidebar::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+    }
+    
+    .sidebar:hover::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.3);
     }
 
     .sidebar {
-        scrollbar-width: none; /* Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.2) transparent;
     }
 
     .sidebar.collapsed {
@@ -31,14 +40,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 0 20px;
+        padding: 15px 20px;
         color: white;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin-bottom: 10px;
     }
 
     .sidebar .logo img {
-        max-height: 90px;
+        max-height: 80px;
         width: auto;
+        transition: all 0.3s ease;
     }
 
     .sidebar .s_logo {
@@ -51,37 +62,45 @@
 
     .sidebar.collapsed .logo .s_logo {
         display: flex;
-        max-height: 50px;
+        max-height: 45px;
         width: auto;
         align-items: center;
         justify-content: center;
     }
 
     .sidebar .menu {
-        padding: 10px;
+        padding: 5px 10px;
     }
 
     .menu-item {
-        padding: 12px 15px;
-        color: rgba(255, 255, 255, 0.7);
+        padding: 12px 16px;
+        color: rgba(255, 255, 255, 0.8);
         display: flex;
         align-items: center;
         cursor: pointer;
-        border-radius: 5px;
-        margin: 4px 0;
+        border-radius: 8px;
+        margin: 6px 0;
         transition: all 0.3s ease;
         position: relative;
         text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.3px;
     }
 
     .menu-item:hover {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.15);
         color: white;
+        transform: translateX(3px);
     }
 
     .menu-item i {
         min-width: 30px;
         font-size: 18px;
+        transition: all 0.3s ease;
+    }
+    
+    .menu-item:hover i {
+        transform: scale(1.1);
     }
 
     .menu-item span {
@@ -96,10 +115,16 @@
         font-weight: 900;
         margin-left: 10px;
         transition: transform 0.3s ease;
+        opacity: 0.7;
     }
 
     .has-submenu.active::after {
         transform: rotate(180deg);
+        opacity: 1;
+    }
+    
+    .has-submenu:hover::after {
+        opacity: 1;
     }
 
     .sidebar.collapsed .menu-item span,
@@ -108,13 +133,24 @@
     }
 
     .submenu {
-        margin-left: 30px;
-        display: block;
+        margin-left: 20px;
+        padding-left: 15px;
+        border-left: 1px dashed rgba(255, 255, 255, 0.2);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
         transition: all 0.3s ease;
     }
-
+    
     .submenu.active {
-        display: none;
+        max-height: 500px;
+        opacity: 1;
+        display: block;
+    }
+    
+    .submenu .menu-item {
+        padding: 10px 12px;
+        margin: 4px 0;
     }
 </style>
 
@@ -171,3 +207,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Add this script at the end of the file
+    document.addEventListener('DOMContentLoaded', function() {
+        const submenus = document.querySelectorAll('.has-submenu');
+        
+        submenus.forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                // Find the next sibling which should be the submenu
+                const submenu = this.nextElementSibling;
+                if(submenu && submenu.classList.contains('submenu')) {
+                    submenu.classList.toggle('active');
+                }
+            });
+        });
+        
+        // Initialize submenus to be active by default
+        document.querySelectorAll('.submenu').forEach(submenu => {
+            submenu.classList.add('active');
+            submenu.previousElementSibling.classList.add('active');
+        });
+    });
+</script>
