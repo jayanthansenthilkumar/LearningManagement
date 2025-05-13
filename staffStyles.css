@@ -1,4 +1,5 @@
-<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 /* General card styling */
 .card {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -347,8 +348,6 @@ td {
 .content-wrapper.show {
     opacity: 1;
 }
-</style>
-<style>
 .custom-pagination {
 display: flex;
 justify-content: space-between;
@@ -433,4 +432,3 @@ outline: none;
 border-color: #86b7fe;
 box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
 }
-</style>

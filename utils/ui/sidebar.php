@@ -1,5 +1,4 @@
-<style>
-    /* Sidebar Styles */
+<style>    /* Sidebar Styles */
     .sidebar {
         position: fixed;
         top: 0;
@@ -12,15 +11,16 @@
         overflow-y: auto;
         box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
         background-image: url('image/pattern_h.png');
+        font-family: 'Poppins', sans-serif;
     }
 
     .sidebar::-webkit-scrollbar {
-        width: 6px;
+        width: 0;
+        display: none;
     }
 
-    .sidebar::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 3px;
+    .sidebar {
+        scrollbar-width: none; /* Firefox */
     }
 
     .sidebar.collapsed {
