@@ -58,7 +58,7 @@
 <footer class="footer">
     <div class="footer-content">        
         <div class="footer-copyright">
-            <p>Copyright © 2024 Designed by <span class="footer-highlight">Technology Innovation Hub - MKCE.</span> All rights reserved.</p>
+            <p>Copyright © 2024 Designed by <span class="footer-highlight">PrisolTech</span> All rights reserved.</p>
         </div>
     </div>
 </footer>
