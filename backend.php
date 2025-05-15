@@ -6,15 +6,10 @@ if (!isset($_SESSION['user'])) {
     require_once 'session.php';
     initializeUserSession();
 }
-
 $department = $_SESSION['user']['dept'];
-
-
-
 function getCourseApprovals()
 {
     global $conn, $department;
-
     $sql = "SELECT c.course_id, c.course_name, f.name as staff_name, 
             c.academic_year, c.semester, c.status, 
             DATE(c.created_at) as submission_date, 
@@ -24,18 +19,14 @@ function getCourseApprovals()
             WHERE c.department = ? 
             AND c.status = 'Pending'
             ORDER BY c.course_id";
-
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $department);
     $stmt->execute();
-
     return $stmt->get_result();
 }
-
 function getCourseDetails($courseId)
 {
     global $conn;
-
     // Get course details
     $sql = "SELECT course_id, course_name, description FROM course WHERE course_id = ?";
     $stmt = $conn->prepare($sql);
@@ -46,14 +37,12 @@ function getCourseDetails($courseId)
     if (!$course) {
         return null;
     }
-
     // Get units
     $sql = "SELECT * FROM unit WHERE course_id = ? ORDER BY unit_number";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $courseId);
     $stmt->execute();
     $units = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
     // Get topics for each unit
     foreach ($units as &$unit) {
         $sql = "SELECT * FROM important_topic WHERE unit_id = ?";
@@ -65,7 +54,6 @@ function getCourseDetails($courseId)
 
     return array_merge($course, ['units' => $units]);
 }
-
 function updateCourseStatus($courseId, $status, $reason = '')
 {
     global $conn;

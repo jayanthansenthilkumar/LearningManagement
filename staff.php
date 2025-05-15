@@ -8,10 +8,8 @@ $uid = $_SESSION['user']['uid'];
 
 <head>    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIC</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIC</title>    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
+    <title>SnapCert</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="image/icons/mkce_s.png">
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="./utils/ui/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
