@@ -109,56 +109,16 @@
         flex-grow: 1;
     }
 
-    .has-submenu::after {
-        content: '\f107';
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        margin-left: 10px;
-        transition: transform 0.3s ease;
-        opacity: 0.7;
-    }
-
-    .has-submenu.active::after {
-        transform: rotate(180deg);
-        opacity: 1;
-    }
-    
-    .has-submenu:hover::after {
-        opacity: 1;
-    }
-
-    .sidebar.collapsed .menu-item span,
-    .sidebar.collapsed .has-submenu::after {
+    .sidebar.collapsed .menu-item span {
         display: none;
-    }
-
-    .submenu {
-        margin-left: 20px;
-        padding-left: 15px;
-        border-left: 1px dashed rgba(255, 255, 255, 0.2);
-        max-height: 0;
-        overflow: hidden;
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-    
-    .submenu.active {
-        max-height: 500px;
-        opacity: 1;
-        display: block;
-    }
-    
-    .submenu .menu-item {
-        padding: 10px 12px;
-        margin: 4px 0;
     }
 </style>
 
 <div class="mobile-overlay" id="mobileOverlay"></div>
 <div class="sidebar" id="sidebar">
     <div class="logo">
-        <!-- <img src="image/mkce.png" alt="College Logo">
-        <img class='s_logo' src="image/mkce_s.png" alt="College Logo"> -->
+        <img src="image/mkce.png" alt="College Logo">
+        <img class='s_logo' src="image/mkce_s.png" alt="College Logo">
     </div>
 
     <div class="menu">
@@ -167,68 +127,37 @@
             <span>Dashboard</span>
         </a>
 
-        <div class="menu-item has-submenu">
-            <i class="fas fa-book-open text-success"></i>
-            <span>LMS</span>        
-        </div>
-        <div class="submenu">
-            <?php
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/LMS/session.php';
+        <?php
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/LMS/session.php';
 
-            if (!isset($_SESSION['user'])) {
-                initializeUserSession();
-            }
+        if (!isset($_SESSION['user'])) {
+            initializeUserSession();
+        }
 
-            $user_role = $_SESSION['user']['role'];
+        $user_role = $_SESSION['user']['role'];
 
-            if ($user_role === 'student') {
-            ?>
-                <a href="./student.php" class="menu-item">
-                    <i class="fas fa-user-graduate text-white"></i>
-                    <span>Student</span>
-                </a>
-            <?php
-            } elseif ($user_role === 'HOD') {
-            ?>
-                <a href="./hod.php" class="menu-item">
-                    <i class="fas fa-chalkboard-teacher text-info"></i>
-                    <span>HOD</span>
-                </a>
-            <?php
-            } else {
-            ?>
-                <a href="./staff.php" class="menu-item">
-                    <i class="fas fa-users text-warning"></i>
-                    <span>Staff</span>
-                </a>
-            <?php
-            }
-            ?>
-        </div>
+        if ($user_role === 'student') {
+        ?>
+            <a href="./student.php" class="menu-item">
+                <i class="fas fa-user-graduate text-success"></i>
+                <span>Student LMS</span>
+            </a>
+        <?php
+        } elseif ($user_role === 'HOD') {
+        ?>
+            <a href="./hod.php" class="menu-item">
+                <i class="fas fa-chalkboard-teacher text-success"></i>
+                <span>HOD LMS</span>
+            </a>
+        <?php
+        } else {
+        ?>
+            <a href="./staff.php" class="menu-item">
+                <i class="fas fa-users text-success"></i>
+                <span>Staff LMS</span>
+            </a>
+        <?php
+        }
+        ?>
     </div>
 </div>
-
-<script>
-    // Add this script at the end of the file
-    document.addEventListener('DOMContentLoaded', function() {
-        const submenus = document.querySelectorAll('.has-submenu');
-        
-        submenus.forEach(item => {
-            item.addEventListener('click', function() {
-                this.classList.toggle('active');
-                
-                // Find the next sibling which should be the submenu
-                const submenu = this.nextElementSibling;
-                if(submenu && submenu.classList.contains('submenu')) {
-                    submenu.classList.toggle('active');
-                }
-            });
-        });
-        
-        // Initialize submenus to be active by default
-        document.querySelectorAll('.submenu').forEach(submenu => {
-            submenu.classList.add('active');
-            submenu.previousElementSibling.classList.add('active');
-        });
-    });
-</script>
